@@ -5,6 +5,10 @@ import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
 
+import meRouter from "./routes/me.route"
+import productRouter from "./routes/product.route"
+import streamRouter from "./routes/stream.route"
+
 import { clerkMiddleware } from "@clerk/express";
 import { clerkWebhookHandler } from "./webhooks/clerk";
 import { getEnv } from "./lib/env";
@@ -26,6 +30,10 @@ app.use(clerkMiddleware());
 app.get("/health", (_req, res) => {
     res.json({ ok: true });
 })
+
+app.use("/api/me", meRouter);
+app.use("/api/products", productRouter);
+app.use("/api/stream", streamRouter);
 
 
 
