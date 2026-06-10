@@ -12,6 +12,8 @@ import checkoutRouter from "./routes/checkout.route"
 
 import { clerkMiddleware } from "@clerk/express";
 import { clerkWebhookHandler } from "./webhooks/clerk";
+import { polarWebhookHandler } from "./webhooks/polar";
+
 import { getEnv } from "./lib/env";
 import job from "./lib/cron";
 
@@ -24,9 +26,9 @@ app.post("/webhooks/clerk", rawJson, (req, res) => {
     void clerkWebhookHandler(req, res);
 });
 
-//app.post("/webhooks/polar", rawJson, (req, res) => {
-//    void polarWebhookHandler(req, res);
-//} );
+app.post("/webhooks/polar", rawJson, (req, res) => {
+    void polarWebhookHandler(req, res);
+} );
 
 app.use(express.json());
 app.use(cors());
