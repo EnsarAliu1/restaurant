@@ -17,6 +17,7 @@ import productRouter from "./routes/product.route";
 import streamRouter from "./routes/stream.route";
 import checkoutRouter from "./routes/checkout.route";
 import adminRouter from "./routes/admin.route";
+import orderRouter from "./routes/order.route";
 
 import { polarWebhookHandler } from "./webhooks/polar";
 import { sentryClerkUserMiddleware } from "./middleware/sentryClerkUser";
@@ -47,7 +48,8 @@ app.use("/api/me", meRouter);
 app.use("/api/products" , productRouter)
 app.use("/api/stream" , streamRouter)
 app.use("/api/checkout", checkoutRouter)
-app.use("/api/admin" , adminRouter)
+app.use("/api/admin", adminRouter)
+app.use("/api/orders", orderRouter)
 
 
 
